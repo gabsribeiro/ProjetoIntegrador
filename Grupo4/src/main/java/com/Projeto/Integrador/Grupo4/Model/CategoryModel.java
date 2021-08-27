@@ -7,27 +7,24 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-
-
 @Entity
-@Table (name = "category")
+@Table(name = "category")
 public class CategoryModel {
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idCategory;
-	
+
 	@NotBlank(message = "Informe o Gênero")
 	private String genre;
-	
-	@NotBlank (message = "Informe a Categoria")
+
+	@NotBlank(message = "Informe a Categoria")
 	private String subCategory;
-	
-	@NotBlank (message = "Informe o Formato")
+
+	@NotBlank(message = "Informe o Formato")
 	private String format;
-	
-	@NotBlank (message = "Informe a Classificação")
+
+	@NotBlank(message = "Informe a Classificação")
 	private int classification;
 
 	public int getIdCategory() {
@@ -69,6 +66,5 @@ public class CategoryModel {
 	public void setClassification(int classification) {
 		this.classification = classification;
 	}
-	
 
 }
