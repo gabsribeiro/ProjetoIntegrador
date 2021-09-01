@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "category")
@@ -24,7 +25,7 @@ public class CategoryModel {
 	@NotBlank(message = "Informe o Formato")
 	private String format;
 
-	@NotBlank(message = "Informe a Classificação")
+	@NotNull(message = "Informe a Classificação")
 	private int classification;
 
 	public int getIdCategory() {

@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "book")
@@ -21,16 +22,16 @@ public class BookModel {
 	@NotBlank(message = "Insira uma descrição")
 	private String description;
 
-	@NotBlank(message = "Informe o valor do livro")
+	@NotNull(message = "Informe o valor do livro")
 	private Double price;
 
 	@NotBlank(message = "Insira o nome do autor")
 	private String author;
 
-	@NotBlank(message = "Insira o ano de publicação")
+	@NotNull(message = "Insira o ano de publicação")
 	private int year;
 
-	@NotBlank(message = "Informe a quantidade do estoque")
+	@NotNull(message = "Informe a quantidade do estoque")
 	private int inventory;
 
 	public int getIdProduct() {
