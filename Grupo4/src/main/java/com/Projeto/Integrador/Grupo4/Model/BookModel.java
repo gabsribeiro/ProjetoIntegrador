@@ -78,7 +78,7 @@ public class BookModel {
 		this.category = category;
 	}
 	
-	public BookModel(String title, String description, double d, String string3, int i, int j, int k, String string4, String string5, int l, CategoryModel c1) {
+	public BookModel() {
 		super();
 	} 
 	
