@@ -35,20 +35,17 @@ public class BookModel {
 	@NotNull(message = "Informe a quantidade do estoque")
 	private int inventory;
 	
-	
 	@NotBlank
 	private String language;
 	
 	@NotNull
-	@Size (min = 13)
-	private int ISBN;
+	private long isbn;
 	
 	@NotNull
-	@Size (min = 13)
-	private int EAN;
+	private long ean;
 	
-	@NotBlank
-	private String Country;
+	@NotBlank(message = "Informe a cidade")
+	private String country;
 	
 	@NotNull(message = "Informe a quantidade páginas")
 	private int pages;
@@ -118,28 +115,28 @@ public class BookModel {
 		this.language = language;
 	}
 
-	public int getISBN() {
-		return ISBN;
+	public long getISBN() {
+		return isbn;
 	}
 
-	public void setISBN(int iSBN) {
-		ISBN = iSBN;
+	public void setISBN(long isbn) {
+		this.isbn = isbn;
 	}
 
-	public int getEAN() {
-		return EAN;
+	public long getEAN() {
+		return ean;
 	}
 
-	public void setEAN(int eAN) {
-		EAN = eAN;
+	public void setEAN(long ean) {
+		this.ean = ean;
 	}
 
 	public String getCountry() {
-		return Country;
+		return country;
 	}
 
 	public void setCountry(String country) {
-		Country = country;
+		this.country = country;
 	}
 	
 	public int getPages() {
