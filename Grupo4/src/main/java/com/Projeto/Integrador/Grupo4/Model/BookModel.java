@@ -123,19 +123,19 @@ public class BookModel {
 		this.language = language;
 	}
 
-	public long getISBN() {
+	public long getIsbn() {
 		return isbn;
 	}
 
-	public void setISBN(long isbn) {
+	public void setIsbn(long isbn) {
 		this.isbn = isbn;
 	}
 
-	public long getEAN() {
+	public long getEan() {
 		return ean;
 	}
 
-	public void setEAN(long ean) {
+	public void setEan(long ean) {
 		this.ean = ean;
 	}
 
