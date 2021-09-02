@@ -20,7 +20,7 @@ public class CategoryModel {
 	private String genre;
 
 	@NotBlank(message = "Informe a Categoria")
-	private String subCategory;
+	private String publisher;
 
 	@NotBlank(message = "Informe o Formato")
 	private String format;
@@ -44,12 +44,12 @@ public class CategoryModel {
 		this.genre = genre;
 	}
 
-	public String getSubCategory() {
-		return subCategory;
+	public String getPublisher() {
+		return publisher;
 	}
 
-	public void setSubCategory(String subCategory) {
-		this.subCategory = subCategory;
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
 	}
 
 	public String getFormat() {
