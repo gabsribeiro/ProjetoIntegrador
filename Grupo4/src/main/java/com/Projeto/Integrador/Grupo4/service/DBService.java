@@ -73,6 +73,9 @@ public class DBService {
 				+ "numa caçada frenética para encontrar respostas e decidir em quem confiar, antes que o mundo que conhecemos seja destruído.",21.99,
 				"Dan Brown",2013,31,"Português",9788408118077l,2008908084922l,"Brasil",448,c3);
 		
+		c1.getBook().add(b1);
+		
+		
 		cRepository.saveAll(Arrays.asList(c1,c2,c3,c4,c5));
 		bRepository.saveAll(Arrays.asList(b1,b2,b3,b4,b5));
 	}
