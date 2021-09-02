@@ -17,13 +17,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.Projeto.Integrador.Grupo4.Model.CategoryModel;
 import com.Projeto.Integrador.Grupo4.Repository.CategoryRepository;
+import com.Projeto.Integrador.Grupo4.service.CategoryService;
 
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/category")
 public class CategoryController {
+	
 	@Autowired
 	private CategoryRepository repository;
+	
+	@Autowired
+	private CategoryService service;
 
 	@GetMapping
 	public ResponseEntity<List<CategoryModel>> findAll() {
@@ -36,6 +41,12 @@ public class CategoryController {
 	public ResponseEntity<CategoryModel> findById(@PathVariable Integer id) {
 		ResponseEntity<CategoryModel> obj = repository.findById((int) id).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
+		return obj;
+	}
+	
+	@GetMapping(value = "/description/{genre}")
+	public ResponseEntity<CategoryModel> findByDescriptionGenre(@PathVariable String genre){
+		ResponseEntity<CategoryModel> obj = service.findByDescriptionGenre(genre);
 		return obj;
 	}
 
