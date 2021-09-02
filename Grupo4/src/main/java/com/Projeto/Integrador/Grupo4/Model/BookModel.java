@@ -35,6 +35,7 @@ public class BookModel {
 	@NotNull(message = "Informe a quantidade do estoque")
 	private int inventory;
 	
+	
 	@NotBlank
 	private String language;
 	
@@ -48,6 +49,10 @@ public class BookModel {
 	
 	@NotBlank
 	private String Country;
+	
+	@NotNull(message = "Informe a quantidade páginas")
+	private int pages;
+	
 
 	public int getIdProduct() {
 		return idProduct;
@@ -135,6 +140,14 @@ public class BookModel {
 
 	public void setCountry(String country) {
 		Country = country;
+	}
+	
+	public int getPages() {
+		return pages;
+	}
+
+	public void setPages(int pages) {
+		this.pages = pages;
 	}
 
 	
