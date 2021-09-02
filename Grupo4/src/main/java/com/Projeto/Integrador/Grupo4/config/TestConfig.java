@@ -1,6 +1,7 @@
 package com.Projeto.Integrador.Grupo4.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
@@ -13,9 +14,8 @@ public class TestConfig {
 	@Autowired
 	private DBService service;
 	
-	
-	public void instanceDB() {
-		
+	@Bean
+	public void instanciaDB() {	
 		this.service.instanceDB();
 	}
 }

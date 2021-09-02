@@ -1,5 +1,6 @@
 package com.Projeto.Integrador.Grupo4.Model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +24,7 @@ public class BookModel {
 	@NotBlank(message = "Informe o título")
 	private String title;
 
+	@Column(length = 100000)
 	@NotBlank(message = "Insira uma descrição")
 	private String description;
 
