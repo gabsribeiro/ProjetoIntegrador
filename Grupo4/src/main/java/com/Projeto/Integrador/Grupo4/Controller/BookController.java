@@ -2,10 +2,14 @@ package com.Projeto.Integrador.Grupo4.Controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,5 +36,9 @@ public class BookController {
 		ResponseEntity<BookModel> obj = repository.findById((int) id).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 		return obj;
+	}
+	@PostMapping
+	public ResponseEntity<BookModel> post(@Valid @RequestBody BookModel book) {
+		return ResponseEntity.status(201).body(repository.save(book));
 	}
 }
