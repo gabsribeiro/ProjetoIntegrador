@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "book")
@@ -33,6 +34,20 @@ public class BookModel {
 
 	@NotNull(message = "Informe a quantidade do estoque")
 	private int inventory;
+	
+	@NotBlank
+	private String language;
+	
+	@NotNull
+	@Size (min = 13)
+	private int ISBN;
+	
+	@NotNull
+	@Size (min = 13)
+	private int EAN;
+	
+	@NotBlank
+	private String Country;
 
 	public int getIdProduct() {
 		return idProduct;
@@ -90,4 +105,37 @@ public class BookModel {
 		this.inventory = inventory;
 	}
 
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public int getISBN() {
+		return ISBN;
+	}
+
+	public void setISBN(int iSBN) {
+		ISBN = iSBN;
+	}
+
+	public int getEAN() {
+		return EAN;
+	}
+
+	public void setEAN(int eAN) {
+		EAN = eAN;
+	}
+
+	public String getCountry() {
+		return Country;
+	}
+
+	public void setCountry(String country) {
+		Country = country;
+	}
+
+	
 }
