@@ -34,16 +34,28 @@ public class CategoryModel {
 
 	@NotNull(message = "Informe a Classificação")
 	private int classification;
-
-	public int getIdCategory() {
-		return idCategory;
-	}
 	
 	@OneToMany (mappedBy = "category", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties ({"category"})
 	private List<BookModel> book = new ArrayList<>();
 	
+	public CategoryModel( String genre, String publisher, String format, int classification) {
+		super();
+		this.genre = genre;
+		this.publisher = publisher;
+		this.format = format;
+		this.classification = classification;
+	}
 
+	public CategoryModel() {
+		super();
+	}
+
+	public int getIdCategory() {
+		return idCategory;
+	}
+	
+	
 	public void setIdCategory(int idCategory) {
 		this.idCategory = idCategory;
 	}

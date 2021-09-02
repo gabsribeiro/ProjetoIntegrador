@@ -58,7 +58,30 @@ public class BookModel {
 	@JoinColumn (name = "IdCategory")
 	@JsonIgnoreProperties ({"book"})
 	private CategoryModel category;
-
+	
+	public BookModel(String title, String description, Double price, String author,
+			int year, int inventory, String language, long isbn, long ean, String country, int pages,
+			CategoryModel category) {
+		super();
+	
+		this.title = title;
+		this.description = description;
+		this.price = price;
+		this.author = author;
+		this.year = year;
+		this.inventory = inventory;
+		this.language = language;
+		this.isbn = isbn;
+		this.ean = ean;
+		this.country = country;
+		this.pages = pages;
+		this.category = category;
+	}
+	
+	public BookModel(String title, String description, double d, String string3, int i, int j, int k, String string4, String string5, int l, CategoryModel c1) {
+		super();
+	} 
+	
 	public int getIdProduct() {
 		return idProduct;
 	}
