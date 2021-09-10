@@ -1,6 +1,7 @@
 package com.Projeto.Integrador.Grupo4.Controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -29,24 +30,31 @@ public class BookController {
 	@Autowired
 	private BookService service;
 
-	@GetMapping
 	public ResponseEntity<List<BookModel>> getAll() {
 		List<BookModel> obj = repository.findAll();
-		return ResponseEntity.ok().body(obj);
-
+		if(obj.isEmpty()) {
+			return ResponseEntity.status(204).build();
+		}else {
+			return ResponseEntity.status(200).body(obj);
+		}
 	}
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<BookModel> findById(@PathVariable Long id) {
-		ResponseEntity<BookModel> obj = repository.findById((long) id).map(resp -> ResponseEntity.ok(resp))
-				.orElse(ResponseEntity.notFound().build());
-		return obj;
+		Optional<BookModel> idObj = repository.findById(id);
+		if(idObj.isPresent()) {
+			return ResponseEntity.status(200).body(idObj.get());
+		}else {
+			return ResponseEntity.status(204).build();
+		}
 	}
 
 	@GetMapping(value = "/title/{title}")
 	public ResponseEntity<BookModel> findByDescriptionTitle(@PathVariable String title){
-		ResponseEntity<BookModel> obj = service.findByDescriptionTitle(title);
-		return obj;
+		ResponseEntity<BookModel> titleObj = service.findByDescriptionTitle(title);
+		return titleObj;
+		
+		
 	}
 	
 	@PostMapping
