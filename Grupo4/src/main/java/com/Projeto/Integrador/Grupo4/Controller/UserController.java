@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Projeto.Integrador.Grupo4.Model.UserModel;
 import com.Projeto.Integrador.Grupo4.Model.Utilities.UserDTO;
 import com.Projeto.Integrador.Grupo4.Repository.UserRepository;
+import com.Projeto.Integrador.Grupo4.service.UserService;
 
 @RestController
 @CrossOrigin("*")
@@ -27,6 +28,8 @@ public class UserController {
 
 	@Autowired
 	private UserRepository repository;
+	@Autowired
+	private UserService service;
 
 	@GetMapping
 	public ResponseEntity<List<UserModel>> findByAll() {
