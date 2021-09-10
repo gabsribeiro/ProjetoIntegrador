@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
-@Table(name = "user")
+@Table(name = "tb_user")
 public class UserModel{
 
 	@Id
