@@ -1,6 +1,7 @@
 package com.Projeto.Integrador.Grupo4.Controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -33,15 +34,21 @@ public class CategoryController {
 	@GetMapping
 	public ResponseEntity<List<CategoryModel>> findAll() {
 		List<CategoryModel> obj = repository.findAll();
-		return ResponseEntity.ok().body(obj);
-
+		if(obj.isEmpty()){
+			return ResponseEntity.status(204).build();
+		}else{
+			return ResponseEntity.status(200).body(obj);
+		}
 	}
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<CategoryModel> findById(@PathVariable Long id) {
-		ResponseEntity<CategoryModel> obj = repository.findById((long) id).map(resp -> ResponseEntity.ok(resp))
-				.orElse(ResponseEntity.notFound().build());
-		return obj;
+		Optional<CategoryModel> idObj = repository.findById((long) id);
+		if(idObj.isPresent()) {
+			return ResponseEntity.status(200).body(idObj.get());
+		}else{
+			return ResponseEntity.status(204).build();
+		}
 	}
 	
 	@GetMapping(value = "/genre/{genre}")
