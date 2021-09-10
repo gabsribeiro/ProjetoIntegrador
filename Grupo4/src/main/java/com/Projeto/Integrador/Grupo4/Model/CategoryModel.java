@@ -16,12 +16,12 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "category")
+@Table(name = "tb_category")
 public class CategoryModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idCategory;
+	private long idCategory;
 
 	@NotBlank(message = "Informe o Gênero")
 	private String genre;
@@ -51,12 +51,12 @@ public class CategoryModel {
 		super();
 	}
 
-	public int getIdCategory() {
+	public long getIdCategory() {
 		return idCategory;
 	}
 	
 	
-	public void setIdCategory(int idCategory) {
+	public void setIdCategory(long idCategory) {
 		this.idCategory = idCategory;
 	}
 

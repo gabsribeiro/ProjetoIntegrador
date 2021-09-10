@@ -37,8 +37,8 @@ public class BookController {
 	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<BookModel> findById(@PathVariable Integer id) {
-		ResponseEntity<BookModel> obj = repository.findById((int) id).map(resp -> ResponseEntity.ok(resp))
+	public ResponseEntity<BookModel> findById(@PathVariable Long id) {
+		ResponseEntity<BookModel> obj = repository.findById((long) id).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 		return obj;
 	}
@@ -60,7 +60,7 @@ public class BookController {
 	}
 
 	@DeleteMapping(value = "/{id}")
-	public void deleteById(@PathVariable Integer id) {
+	public void deleteById(@PathVariable Long id) {
 		repository.deleteById(id);
 	}
 

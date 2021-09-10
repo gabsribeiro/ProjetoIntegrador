@@ -14,12 +14,12 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "book")
+@Table(name = "tb_book")
 public class BookModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idProduct;
+	private long idProduct;
 
 	@NotBlank(message = "Informe o título")
 	private String title;
@@ -83,11 +83,11 @@ public class BookModel {
 		super();
 	} 
 	
-	public int getIdProduct() {
+	public long getIdProduct() {
 		return idProduct;
 	}
 
-	public void setIdProduct(int idProduct) {
+	public void setIdProduct(long idProduct) {
 		this.idProduct = idProduct;
 	}
 
