@@ -14,7 +14,7 @@ import org.hibernate.validator.constraints.br.CPF;
 @Entity
 @Table(name = "tb_user")
 public class UserModel{
-
+//attributes
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long IdClient;
