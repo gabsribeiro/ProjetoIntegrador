@@ -1,11 +1,13 @@
 package com.Projeto.Integrador.Grupo4.Controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,6 +29,16 @@ public class UserController {
 			return ResponseEntity.status(204).build();
 		} else {
 			return ResponseEntity.status(200).body(listObject);
+		}
+	}
+	
+	@GetMapping("/{id_user}")
+	public ResponseEntity<UserModel> findById(@PathVariable(value = "id_post") Long id) {
+		Optional<UserModel> postObject = repository.findById(id);
+		if(postObject.isPresent()) {
+			return ResponseEntity.status(200).body(postObject.get());
+		} else {
+			return ResponseEntity.status(204).build();
 		}
 	}
 		
