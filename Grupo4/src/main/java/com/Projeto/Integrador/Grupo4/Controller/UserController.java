@@ -63,7 +63,7 @@ public class UserController {
 
 	@PostMapping("/register")
 	public ResponseEntity<Object> registerUser(@Valid @RequestBody UserModel newUser) {
-		Optional<Object> registeredObject = service.registerUser(newUser);
+		Optional<Object> registeredObject = Optional.ofNullable(service.registerUser(newUser));
 		if (registeredObject.isPresent()) {
 			return ResponseEntity.status(201).body(registeredObject.get());
 		} else {
@@ -72,7 +72,7 @@ public class UserController {
 	}
 
 	@PutMapping("/auth")
-	public ResponseEntity<Object> getCredential(@Valid @RequestBody UserDTO login) {
+	public ResponseEntity<Object> getCredential(@Valid @RequestBody Optional<UserDTO> login) {
 		Optional<?> credentialObject = service.getCredential(login);
 		if (credentialObject.isPresent()) {
 			return ResponseEntity.status(201).body(credentialObject.get());
