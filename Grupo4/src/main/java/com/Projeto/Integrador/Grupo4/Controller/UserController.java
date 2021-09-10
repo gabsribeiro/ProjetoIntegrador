@@ -3,11 +3,15 @@ package com.Projeto.Integrador.Grupo4.Controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -51,6 +55,19 @@ public class UserController {
 			return ResponseEntity.status(200).body(emailObject);
 		}
 	}
+	
+	@PostMapping("/register")
+	public ResponseEntity<Object> registerUser(@Valid @RequestBody UserModel newUser) {
+		Optional<Object> registeredObject = service.registerUser(newUser);
+		if(registeredObject.isPresent()) {
+			return ResponseEntity.status(201).body(registeredObject.get());
+		} else {
+			return ResponseEntity.status(401).build();
+		}
+	}
+	
+	
+	
 		
 
 }
