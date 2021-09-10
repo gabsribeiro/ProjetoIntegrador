@@ -41,6 +41,16 @@ public class UserController {
 			return ResponseEntity.status(204).build();
 		}
 	}
+	
+	@GetMapping("/email/{email}")
+	public ResponseEntity<Optional<UserModel>> findByEmail(@PathVariable(value = "email") String email) {
+		Optional<UserModel> emailObject = repository.findByEmail(email);
+		if(emailObject.isEmpty()) {
+			return ResponseEntity.status(204).build();
+		} else {
+			return ResponseEntity.status(200).body(emailObject);
+		}
+	}
 		
 
 }
