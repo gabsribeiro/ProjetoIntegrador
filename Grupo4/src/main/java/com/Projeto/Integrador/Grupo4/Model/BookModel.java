@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "tb_book")
 public class BookModel {
-
+//attributes
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idProduct;
@@ -59,6 +59,8 @@ public class BookModel {
 	@JoinColumn (name = "IdCategory")
 	@JsonIgnoreProperties ({"book"})
 	private CategoryModel category;
+
+//construction	
 	
 	public BookModel(String title, String description, Double price, String author,
 			int year, int inventory, String language, long isbn, long ean, String country, int pages,
