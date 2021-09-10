@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "tb_category")
 public class CategoryModel {
-
+//attributes
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idCategory;
@@ -38,7 +38,8 @@ public class CategoryModel {
 	@OneToMany (mappedBy = "category", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties ({"category"})
 	private List<BookModel> book = new ArrayList<>();
-	
+
+//comments	
 	public CategoryModel( String genre, String publisher, String format, int classification) {
 		super();
 		this.genre = genre;
