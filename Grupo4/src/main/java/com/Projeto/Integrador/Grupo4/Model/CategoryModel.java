@@ -26,26 +26,14 @@ public class CategoryModel {
 	@NotBlank(message = "Informe o Gênero")
 	private String genre;
 
-	@NotBlank(message = "Informe a Categoria")
-	private String publisher;
-
-	@NotBlank(message = "Informe o Formato")
-	private String format;
-
-	@NotNull(message = "Informe a Classificação")
-	private int classification;
-	
 	@OneToMany (mappedBy = "category", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties ({"category"})
 	private List<BookModel> book = new ArrayList<>();
 
 //comments	
-	public CategoryModel( String genre, String publisher, String format, int classification) {
+	public CategoryModel( String genre) {
 		super();
 		this.genre = genre;
-		this.publisher = publisher;
-		this.format = format;
-		this.classification = classification;
 	}
 
 	public CategoryModel() {
@@ -55,7 +43,6 @@ public class CategoryModel {
 	public long getIdCategory() {
 		return idCategory;
 	}
-	
 	
 	public void setIdCategory(long idCategory) {
 		this.idCategory = idCategory;
@@ -67,30 +54,6 @@ public class CategoryModel {
 
 	public void setGenre(String genre) {
 		this.genre = genre;
-	}
-
-	public String getPublisher() {
-		return publisher;
-	}
-
-	public void setPublisher(String publisher) {
-		this.publisher = publisher;
-	}
-
-	public String getFormat() {
-		return format;
-	}
-
-	public void setFormat(String format) {
-		this.format = format;
-	}
-
-	public int getClassification() {
-		return classification;
-	}
-
-	public void setClassification(int classification) {
-		this.classification = classification;
 	}
 
 	public List<BookModel> getBook() {

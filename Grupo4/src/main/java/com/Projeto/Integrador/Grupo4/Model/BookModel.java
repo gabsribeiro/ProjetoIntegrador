@@ -49,8 +49,14 @@ public class BookModel {
 	@NotNull
 	private long ean;
 	
-	@NotBlank(message = "Informe a cidade")
+	@NotBlank(message = "Informe o País")
 	private String country;
+	
+	@NotBlank(message = "Informe a Editora")
+	private String publisher;
+
+	@NotBlank(message = "Informe o Formato")
+	private String format;
 	
 	@NotNull(message = "Informe a quantidade páginas")
 	private int pages;
@@ -59,14 +65,21 @@ public class BookModel {
 	@JoinColumn (name = "IdCategory")
 	@JsonIgnoreProperties ({"book"})
 	private CategoryModel category;
-
+	
 //construction	
 	
-	public BookModel(String title, String description, Double price, String author,
-			int year, int inventory, String language, long isbn, long ean, String country, int pages,
-			CategoryModel category) {
-		super();
-	
+	public BookModel(@NotBlank(message = "Informe o título") String title,
+			@NotBlank(message = "Insira uma descrição") String description,
+			@NotNull(message = "Informe o valor do livro") Double price,
+			@NotBlank(message = "Insira o nome do autor") String author,
+			@NotNull(message = "Insira o ano de publicação") int year,
+			@NotNull(message = "Informe a quantidade do estoque") int inventory, @NotBlank String language,
+			@NotNull long isbn, @NotNull long ean, @NotBlank(message = "Informe o País") String country,
+			@NotBlank(message = "Informe a Editora") String publisher,
+			@NotBlank(message = "Informe o Formato") String format,
+			@NotNull(message = "Informe a quantidade páginas") int pages, CategoryModel category) {
+		
+		
 		this.title = title;
 		this.description = description;
 		this.price = price;
@@ -77,14 +90,13 @@ public class BookModel {
 		this.isbn = isbn;
 		this.ean = ean;
 		this.country = country;
+		this.publisher = publisher;
+		this.format = format;
 		this.pages = pages;
 		this.category = category;
+		
 	}
-	
-	public BookModel() {
-		super();
-	} 
-	
+
 	public long getIdProduct() {
 		return idProduct;
 	}
@@ -172,7 +184,23 @@ public class BookModel {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	
+
+	public String getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+
+	public String getFormat() {
+		return format;
+	}
+
+	public void setFormat(String format) {
+		this.format = format;
+	}
+
 	public int getPages() {
 		return pages;
 	}
@@ -189,5 +217,4 @@ public class BookModel {
 		this.category = category;
 	}
 
-	
 }
