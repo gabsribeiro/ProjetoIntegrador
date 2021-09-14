@@ -21,12 +21,7 @@ public class DevConfig {
 	private String ddl;
 	
 	@Bean
-	public boolean instanciaDB() {
-		
-		if(ddl.equals("create")) {
-			this.dbService.instanceDB();
-		}
-		
-		return false;
+	public void instanciaDB() {	
+		this.dbService.instanceDB();
 	}
 }
