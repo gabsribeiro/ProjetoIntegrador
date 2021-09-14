@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Projeto.Integrador.Grupo4.Model.CategoryModel;
 import com.Projeto.Integrador.Grupo4.Repository.CategoryRepository;
 import com.Projeto.Integrador.Grupo4.service.CategoryService;
+import com.Projeto.Integrador.Grupo4.service.exception.DataIntegratyViolationException;
 
 @CrossOrigin("*")
 @RestController
@@ -35,7 +36,7 @@ public class CategoryController {
 	public ResponseEntity<List<CategoryModel>> findAll() {
 		List<CategoryModel> obj = repository.findAll();
 		if(obj.isEmpty()){
-			return ResponseEntity.status(204).build();
+			throw new DataIntegratyViolationException("Não existe nenhuma categoria cadastrada");
 		}else{
 			return ResponseEntity.status(200).body(obj);
 		}
@@ -47,13 +48,13 @@ public class CategoryController {
 		if(idObj.isPresent()) {
 			return ResponseEntity.status(200).body(idObj.get());
 		}else{
-			return ResponseEntity.status(204).build();
+			throw new DataIntegratyViolationException("Não existe nenhuma categoria com esse id");
 		}
 	}
 	
 	@GetMapping(value = "/genre/{genre}")
-	public ResponseEntity<CategoryModel> findByDescriptionGenre(@PathVariable String genre){
-		ResponseEntity<CategoryModel> obj = service.findByDescriptionGenre(genre);
+	public ResponseEntity<List<CategoryModel>> findByDescriptionGenre(@PathVariable String genre){
+		ResponseEntity<List<CategoryModel>> obj = service.findByDescriptionGenre(genre);
 		return obj;
 	}
 
@@ -69,6 +70,7 @@ public class CategoryController {
 
 	@DeleteMapping("/{id}")
 	public void deleteById(@PathVariable Long id) {
+		findById(id);
 		repository.deleteById(id);
 	}
 	

@@ -20,6 +20,7 @@ import com.Projeto.Integrador.Grupo4.Model.UserModel;
 import com.Projeto.Integrador.Grupo4.Model.Utilities.UserDTO;
 import com.Projeto.Integrador.Grupo4.Repository.UserRepository;
 import com.Projeto.Integrador.Grupo4.service.UserService;
+import com.Projeto.Integrador.Grupo4.service.exception.DataIntegratyViolationException;
 
 @RestController
 @CrossOrigin("*")
@@ -35,19 +36,19 @@ public class UserController {
 	public ResponseEntity<List<UserModel>> findByAll() {
 		List<UserModel> listObject = repository.findAll();
 		if (listObject.isEmpty()) {
-			return ResponseEntity.status(204).build();
+			throw new DataIntegratyViolationException("Não existe nenhum usuário cadastrado");
 		} else {
 			return ResponseEntity.status(200).body(listObject);
 		}
 	}
 
 	@GetMapping("/{id_user}")
-	public ResponseEntity<UserModel> findById(@PathVariable(value = "id_post") Long id) {
+	public ResponseEntity<UserModel> findById(@PathVariable(value = "id_user") Long id) {
 		Optional<UserModel> postObject = repository.findById(id);
 		if (postObject.isPresent()) {
 			return ResponseEntity.status(200).body(postObject.get());
 		} else {
-			return ResponseEntity.status(204).build();
+			throw new DataIntegratyViolationException("Não existe nenhum usuário com esse id");
 		}
 	}
 
@@ -55,7 +56,7 @@ public class UserController {
 	public ResponseEntity<Optional<UserModel>> findByEmail(@PathVariable(value = "email") String email) {
 		Optional<UserModel> emailObject = repository.findByEmail(email);
 		if (emailObject.isEmpty()) {
-			return ResponseEntity.status(204).build();
+			throw new DataIntegratyViolationException("Não existe usuário com esse email");
 		} else {
 			return ResponseEntity.status(200).body(emailObject);
 		}

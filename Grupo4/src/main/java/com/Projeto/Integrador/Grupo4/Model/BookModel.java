@@ -68,6 +68,10 @@ public class BookModel {
 	
 //construction	
 	
+	public BookModel() {
+		
+	}
+	
 	public BookModel(@NotBlank(message = "Informe o título") String title,
 			@NotBlank(message = "Insira uma descrição") String description,
 			@NotNull(message = "Informe o valor do livro") Double price,
